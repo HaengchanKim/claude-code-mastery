@@ -1,0 +1,155 @@
+/* 커스텀 스타일 (Tailwind CSS 보완용) */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --accent: #4f46e5;        /* indigo-600 */
+    --accent-light: #818cf8;  /* indigo-400 */
+}
+
+* {
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 네비게이션 링크 ===== */
+.nav-link {
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+    background-color: #eef2ff;
+}
+
+.dark .nav-link {
+    color: #94a3b8;
+}
+
+.dark .nav-link:hover {
+    color: var(--accent-light);
+    background-color: rgba(99, 102, 241, 0.12);
+}
+
+/* ===== 섹션 제목 ===== */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(79, 70, 229, 0.25), transparent);
+}
+
+.dark .section-title {
+    color: var(--accent-light);
+}
+
+.dark .section-title::after {
+    background: linear-gradient(to right, rgba(129, 140, 248, 0.3), transparent);
+}
+
+/* ===== 스크롤 등장 애니메이션 ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.65s cubic-bezier(0.2, 0.6, 0.2, 1),
+                transform 0.65s cubic-bezier(0.2, 0.6, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ===== 스킬 게이지 바 ===== */
+.skill-bar {
+    height: 6px;
+    border-radius: 999px;
+    background-color: #e2e8f0;
+    overflow: hidden;
+}
+
+.dark .skill-bar {
+    background-color: #1e293b;
+}
+
+.skill-bar-fill {
+    display: block;
+    height: 100%;
+    width: 0;                 /* JS가 실제 비율로 채움 */
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--accent), #8b5cf6);
+    transition: width 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ===== 프로젝트 카드 ===== */
+.project-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 12px 28px -12px rgba(79, 70, 229, 0.25);
+}
+
+/* ===== 스크롤바 ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #334155;
+}
+
+/* ===== 모션 최소화 설정 존중 ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .skill-bar-fill,
+    .project-card {
+        transition: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
