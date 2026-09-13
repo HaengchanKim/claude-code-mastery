@@ -1,6 +1,7 @@
 name: Deploy my-profile-site to GitHub Pages
 
 on:
+  # re-trigger after enabling Pages source = GitHub Actions
   push:
     branches: [main]
     paths:
