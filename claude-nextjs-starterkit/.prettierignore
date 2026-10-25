@@ -1,0 +1,9 @@
+# 빌드 산출물 / 의존성
+.next
+out
+build
+node_modules
+package-lock.json
+
+# shadcn CLI가 관리하는 컴포넌트 (CLI 재설치 시 덮어쓰이므로 포맷하지 않음)
+src/components/ui
